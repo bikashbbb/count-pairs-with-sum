@@ -1,0 +1,18 @@
+class Solution:
+    def getPairsCount(self, arr, n, k):
+        pairs = 0
+        hashtable = {}
+        if n<=1:
+            return pairs
+        for item in arr:
+            # keys : k-item
+            if str(item) in hashtable.keys():
+                pairs+= len(hashtable[str(item)])
+
+            if str(k-item) in hashtable.keys():
+                hashtable[str(k-item)].append(item)
+            
+            else:
+                hashtable.update({str(k-item):[item]})
+                
+        return pairs
